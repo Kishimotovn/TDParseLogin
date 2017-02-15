@@ -12,5 +12,9 @@ Pod::Spec.new do |s|
   
   # If more than one source file: https://guides.cocoapods.org/syntax/podspec.html#source_files
   s.source_files = 'TDParseLogin/*.swift'
-
+  s.dependency 'Bolts'
+  s.dependency 'Parse'
+  s.dependency 'ParseFacebookUtilsV4'
+  s.dependency 'ParseTwitterUtils'
+  s.dependency 'Google/SignIn'
 end

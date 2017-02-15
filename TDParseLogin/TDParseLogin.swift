@@ -94,7 +94,7 @@ public class TDParseLogin: NSObject {
         }
     }
     
-    fileprivate func loginWithGoogle(with accessToken: String, completionHandler: TDParseLoginUserBlock?) {
+    fileprivate func loginWithGoogle(with accessToken: String, completionHandler: (PFUser?, TDParseLoginError? -> Void)?) {
         PFCloud.callFunction(inBackground: self.googleCloudFuncName, withParameters: ["accessToken": accessToken]) { data, error in
             if error != nil {
                 completionHandler?(nil, .parseError(error!.localizedDescription))
