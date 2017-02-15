@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB804BCA555DD8B5AB052411 /* Pods_TDParseLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5967AABA3829E288FB41E0 /* Pods_TDParseLogin.framework */; };
 		DB9DEFA11E53AE0D00379FA7 /* TDParseLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB9DEFA81E5458FC00379FA7 /* TDParseModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */; };
+		DB9DEFAA1E54596200379FA7 /* ParseLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */; };
+		DB9DEFB01E545D5200379FA7 /* TDParseLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D5967AABA3829E288FB41E0 /* Pods_TDParseLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDParseLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53B68A451BF8EC8EF066CC55 /* Pods-TDParseLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDParseLogin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDParseLogin/Pods-TDParseLogin.debug.xcconfig"; sourceTree = "<group>"; };
+		D9DFEAE4AAE9EE047061F60B /* Pods-TDParseLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDParseLogin.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDParseLogin/Pods-TDParseLogin.release.xcconfig"; sourceTree = "<group>"; };
 		DB9DEF9C1E53AE0D00379FA7 /* TDParseLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDParseLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDParseLogin.h; sourceTree = "<group>"; };
 		DB9DEFA01E53AE0D00379FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDParseModify.swift; sourceTree = "<group>"; };
+		DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginError.swift; sourceTree = "<group>"; };
+		DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDParseLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +31,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB804BCA555DD8B5AB052411 /* Pods_TDParseLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		195F49A7278CDC5F592F2E5F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53B68A451BF8EC8EF066CC55 /* Pods-TDParseLogin.debug.xcconfig */,
+				D9DFEAE4AAE9EE047061F60B /* Pods-TDParseLogin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9932B126040DCABC312EFA02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D5967AABA3829E288FB41E0 /* Pods_TDParseLogin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DB9DEF921E53AE0D00379FA7 = {
 			isa = PBXGroup;
 			children = (
 				DB9DEF9E1E53AE0D00379FA7 /* TDParseLogin */,
 				DB9DEF9D1E53AE0D00379FA7 /* Products */,
+				195F49A7278CDC5F592F2E5F /* Pods */,
+				9932B126040DCABC312EFA02 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,6 +78,9 @@
 			children = (
 				DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */,
 				DB9DEFA01E53AE0D00379FA7 /* Info.plist */,
+				DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */,
+				DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */,
+				DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */,
 			);
 			path = TDParseLogin;
 			sourceTree = "<group>";
@@ -70,10 +103,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB9DEFA41E53AE0D00379FA7 /* Build configuration list for PBXNativeTarget "TDParseLogin" */;
 			buildPhases = (
+				10BB37F079EF0A874B8165E0 /* [CP] Check Pods Manifest.lock */,
 				DB9DEF971E53AE0D00379FA7 /* Sources */,
 				DB9DEF981E53AE0D00379FA7 /* Frameworks */,
 				DB9DEF991E53AE0D00379FA7 /* Headers */,
 				DB9DEF9A1E53AE0D00379FA7 /* Resources */,
+				1ED63BCA9C6E582E897B0CBF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +131,7 @@
 					DB9DEF9B1E53AE0D00379FA7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = RA4PB2C3M4;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -127,11 +163,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10BB37F079EF0A874B8165E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1ED63BCA9C6E582E897B0CBF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TDParseLogin/Pods-TDParseLogin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DB9DEF971E53AE0D00379FA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB9DEFAA1E54596200379FA7 /* ParseLoginError.swift in Sources */,
+				DB9DEFB01E545D5200379FA7 /* TDParseLogin.swift in Sources */,
+				DB9DEFA81E5458FC00379FA7 /* TDParseModify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +214,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -195,6 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -239,7 +313,10 @@
 		};
 		DB9DEFA51E53AE0D00379FA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53B68A451BF8EC8EF066CC55 /* Pods-TDParseLogin.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
@@ -252,13 +329,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.thedistance.TDParseLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = TDParseLogin/SwiftGID;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DB9DEFA61E53AE0D00379FA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9DFEAE4AAE9EE047061F60B /* Pods-TDParseLogin.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
@@ -271,6 +354,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.thedistance.TDParseLogin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = TDParseLogin/SwiftGID;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -294,6 +379,7 @@
 				DB9DEFA61E53AE0D00379FA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
