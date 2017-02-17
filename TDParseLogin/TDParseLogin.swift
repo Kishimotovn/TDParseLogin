@@ -48,15 +48,43 @@ public class TDParseLogin: NSObject {
         GIDSignIn.sharedInstance().signIn()
     }
     
+    // To get the email from twitter account, you need to change settings inside your twitter app:
+    
+    // Go to https://support.twitter.com/forms/platform Select "I need access to special permissions"
+    //    
+    // Enter Application Name and ID. These can be obtained via https://apps.twitter.com/ -- the application ID is the numeric part in the browser's address bar after you click your app.
+    //
+    // Permissions Request: "Email address" Submit & wait for response
+    //    
+    // After your request is granted, an addition permission setting is added in your twitter app's "Permission" section. Go to "Additional Permissions" and just tick the checkbox for "Request email addresses from users".
     public func loginWithTwitter() {
         PFTwitterUtils.logIn { user, error in
             if let user = user {
                 if user.isNew {
-                    let prepareError = self.delegate?.prepare(newUser: user)
-                    if prepareError != nil {
-                        self.delegate?.failedToSignIn(with: prepareError!)
+                    if !PFTwitterUtils.isLinked(with: user) {
+                        PFTwitterUtils.linkUser(user) { succeeded, error in
+                            if succeeded {
+                                let prepareError = self.delegate?.prepare(newUser: user)
+                                if prepareError != nil {
+                                    self.delegate?.failedToSignIn(with: prepareError!)
+                                } else {
+                                    self.delegate?.didSignIn(with: user)
+                                }
+                            } else {
+                                if error != nil {
+                                    self.delegate?.failedToSignIn(with: .parseError(error!.localizedDescription))
+                                } else {
+                                    self.delegate?.failedToSignIn(with: .unknown)
+                                }
+                            }
+                        }
                     } else {
-                        self.delegate?.didSignIn(with: user)
+                        let prepareError = self.delegate?.prepare(newUser: user)
+                        if prepareError != nil {
+                            self.delegate?.failedToSignIn(with: prepareError!)
+                        } else {
+                            self.delegate?.didSignIn(with: user)
+                        }
                     }
                 } else {
                     self.delegate?.didSignIn(with: user)
@@ -75,11 +103,30 @@ public class TDParseLogin: NSObject {
         PFFacebookUtils.logInInBackground(withReadPermissions: ["email", "public_profile"]) { (user: PFUser?, error: Error?) -> Void in
             if let user = user {
                 if user.isNew {
-                    let prepareError = self.delegate?.prepare(newUser: user)
-                    if prepareError != nil {
-                        self.delegate?.failedToSignIn(with: prepareError!)
+                    if !PFFacebookUtils.isLinked(with: user) {
+                        PFFacebookUtils.linkUser(inBackground: user, withReadPermissions: ["email", "public_profile"]) { succeeded, error in
+                            if succeeded {
+                                let prepareError = self.delegate?.prepare(newUser: user)
+                                if prepareError != nil {
+                                    self.delegate?.failedToSignIn(with: prepareError!)
+                                } else {
+                                    self.delegate?.didSignIn(with: user)
+                                }
+                            } else {
+                                if error != nil {
+                                    self.delegate?.failedToSignIn(with: .parseError(error!.localizedDescription))
+                                } else {
+                                    self.delegate?.failedToSignIn(with: .unknown)
+                                }
+                            }
+                        }
                     } else {
-                        self.delegate?.didSignIn(with: user)
+                        let prepareError = self.delegate?.prepare(newUser: user)
+                        if prepareError != nil {
+                            self.delegate?.failedToSignIn(with: prepareError!)
+                        } else {
+                            self.delegate?.didSignIn(with: user)
+                        }
                     }
                 } else {
                     self.delegate?.didSignIn(with: user)
@@ -94,15 +141,26 @@ public class TDParseLogin: NSObject {
         }
     }
     
-    fileprivate func loginWithGoogle(with accessToken: String, completionHandler: (PFUser?, TDParseLoginError? -> Void)?) {
-        PFCloud.callFunction(inBackground: self.googleCloudFuncName, withParameters: ["accessToken": accessToken]) { data, error in
+    fileprivate func loginWithGoogle(withUser user: GIDGoogleUser, completionHandler: ((PFUser?, TDParseLoginError?) -> Void)?) {
+        PFCloud.callFunction(inBackground: self.googleCloudFuncName, withParameters: ["accessToken": user.authentication.accessToken]) { data, error in
             if error != nil {
                 completionHandler?(nil, .parseError(error!.localizedDescription))
             } else {
                 if let sessionToken = data as? String {
-                    PFUser.become(inBackground: sessionToken) { user, error in
-                        if user != nil {
-                            completionHandler?(user!, nil)
+                    PFUser.become(inBackground: sessionToken) { pfuser, error in
+                        if pfuser != nil {
+                            if pfuser!.email == nil {
+                                pfuser!.email = user.profile.email
+                                if let prepareError = self.delegate?.prepare(newUser: pfuser!) {
+                                    completionHandler?(nil, prepareError)
+                                }
+                                do {
+                                    try pfuser!.save()
+                                } catch let error {
+                                    completionHandler?(nil, .parseError(error.localizedDescription))
+                                }
+                            }
+                            completionHandler?(pfuser!, nil)
                         } else {
                             completionHandler?(nil, .googleLoginFailed)
                         }
@@ -118,7 +176,7 @@ public class TDParseLogin: NSObject {
 extension TDParseLogin: GIDSignInDelegate {
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error == nil {
-            self.loginWithGoogle(with: user.authentication.accessToken) { user, error in
+            self.loginWithGoogle(withUser: user) { user, error in
                 if error != nil {
                     self.delegate?.failedToSignIn(with: error!)
                 } else {
