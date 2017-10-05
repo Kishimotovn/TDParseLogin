@@ -35,7 +35,9 @@ extension TDParseLoginDelegate {
 public class TDParseLogin: NSObject {
     public static let shared = TDParseLogin()
     
-    private override init() { }
+    private override init() {
+        PFUser.register(GoogleAuthDelegate(), forAuthType: PFGoogleUtils.authType)
+    }
     
     var googleSignInUIDelegate: GIDSignInUIDelegate?
     var delegate: TDParseLoginDelegate?
@@ -47,7 +49,7 @@ public class TDParseLogin: NSObject {
         self.delegate?.willSignIn()
         GIDSignIn.sharedInstance().signIn()
     }
-    
+
     // To get the email from twitter account, you need to change settings inside your twitter app:
     
     // Go to https://support.twitter.com/forms/platform Select "I need access to special permissions"
@@ -142,32 +144,22 @@ public class TDParseLogin: NSObject {
     }
     
     fileprivate func loginWithGoogle(withUser user: GIDGoogleUser, completionHandler: ((PFUser?, TDParseLoginError?) -> Void)?) {
-        PFCloud.callFunction(inBackground: self.googleCloudFuncName, withParameters: ["accessToken": user.authentication.accessToken]) { data, error in
-            if error != nil {
-                completionHandler?(nil, .parseError(error!.localizedDescription))
-            } else {
-                if let sessionToken = data as? String {
-                    PFUser.become(inBackground: sessionToken) { pfuser, error in
-                        if pfuser != nil {
-                            if pfuser!.email == nil {
-                                pfuser!.email = user.profile.email
-                                if let prepareError = self.delegate?.prepare(newUser: pfuser!) {
-                                    completionHandler?(nil, prepareError)
-                                }
-                                do {
-                                    try pfuser!.save()
-                                } catch let error {
-                                    completionHandler?(nil, .parseError(error.localizedDescription))
-                                }
-                            }
-                            completionHandler?(pfuser!, nil)
-                        } else {
-                            completionHandler?(nil, .googleLoginFailed)
-                        }
+        PFGoogleUtils.login(with: user) { pfuser, error in
+            if pfuser != nil {
+                if pfuser!.email == nil {
+                    pfuser!.email = user.profile.email
+                    if let prepareError = self.delegate?.prepare(newUser: pfuser!) {
+                        completionHandler?(nil, prepareError)
                     }
-                } else {
-                    completionHandler?(nil, .googleLoginFailed)
+                    do {
+                        try pfuser!.save()
+                    } catch let error {
+                        completionHandler?(nil, .parseError(error.localizedDescription))
+                    }
                 }
+                completionHandler?(pfuser!, nil)
+            } else {
+                completionHandler?(nil, .googleLoginFailed)
             }
         }
     }

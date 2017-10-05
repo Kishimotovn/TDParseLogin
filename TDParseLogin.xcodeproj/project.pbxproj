@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		AB804BCA555DD8B5AB052411 /* Pods_TDParseLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5967AABA3829E288FB41E0 /* Pods_TDParseLogin.framework */; };
+		DB6BE9FA1F866E9600E44418 /* PFGoogleUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BE9F91F866E9600E44418 /* PFGoogleUtils.swift */; };
 		DB9DEFA11E53AE0D00379FA7 /* TDParseLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB9DEFA81E5458FC00379FA7 /* TDParseModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */; };
-		DB9DEFAA1E54596200379FA7 /* ParseLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */; };
+		DB9DEFAA1E54596200379FA7 /* TDParseLoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFA91E54596200379FA7 /* TDParseLoginError.swift */; };
 		DB9DEFB01E545D5200379FA7 /* TDParseLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */; };
 /* End PBXBuildFile section */
 
@@ -18,11 +19,12 @@
 		3D5967AABA3829E288FB41E0 /* Pods_TDParseLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TDParseLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53B68A451BF8EC8EF066CC55 /* Pods-TDParseLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDParseLogin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TDParseLogin/Pods-TDParseLogin.debug.xcconfig"; sourceTree = "<group>"; };
 		D9DFEAE4AAE9EE047061F60B /* Pods-TDParseLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TDParseLogin.release.xcconfig"; path = "Pods/Target Support Files/Pods-TDParseLogin/Pods-TDParseLogin.release.xcconfig"; sourceTree = "<group>"; };
+		DB6BE9F91F866E9600E44418 /* PFGoogleUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFGoogleUtils.swift; sourceTree = "<group>"; };
 		DB9DEF9C1E53AE0D00379FA7 /* TDParseLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDParseLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDParseLogin.h; sourceTree = "<group>"; };
 		DB9DEFA01E53AE0D00379FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDParseModify.swift; sourceTree = "<group>"; };
-		DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginError.swift; sourceTree = "<group>"; };
+		DB9DEFA91E54596200379FA7 /* TDParseLoginError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDParseLoginError.swift; sourceTree = "<group>"; };
 		DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDParseLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,8 +81,9 @@
 				DB9DEF9F1E53AE0D00379FA7 /* TDParseLogin.h */,
 				DB9DEFA01E53AE0D00379FA7 /* Info.plist */,
 				DB9DEFA71E5458FC00379FA7 /* TDParseModify.swift */,
-				DB9DEFA91E54596200379FA7 /* ParseLoginError.swift */,
+				DB9DEFA91E54596200379FA7 /* TDParseLoginError.swift */,
 				DB9DEFAF1E545D5200379FA7 /* TDParseLogin.swift */,
+				DB6BE9F91F866E9600E44418 /* PFGoogleUtils.swift */,
 			);
 			path = TDParseLogin;
 			sourceTree = "<group>";
@@ -125,13 +128,13 @@
 		DB9DEF931E53AE0D00379FA7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "The Distance";
 				TargetAttributes = {
 					DB9DEF9B1E53AE0D00379FA7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = RA4PB2C3M4;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -201,8 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB9DEFAA1E54596200379FA7 /* ParseLoginError.swift in Sources */,
+				DB9DEFAA1E54596200379FA7 /* TDParseLoginError.swift in Sources */,
 				DB9DEFB01E545D5200379FA7 /* TDParseLogin.swift in Sources */,
+				DB6BE9FA1F866E9600E44418 /* PFGoogleUtils.swift in Sources */,
 				DB9DEFA81E5458FC00379FA7 /* TDParseModify.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +224,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -228,7 +234,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -274,7 +284,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -282,7 +294,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -332,7 +348,8 @@
 				SWIFT_INCLUDE_PATHS = TDParseLogin/SwiftGID;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -356,7 +373,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = TDParseLogin/SwiftGID;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
